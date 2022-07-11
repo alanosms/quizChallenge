@@ -8,7 +8,7 @@
 }
 
 .containerMain{
-    background: url("/assets/img/background.png") no-repeat fixed 50%;
+    background: url("../img/background.png") no-repeat fixed 50%;
     height: 100vh;
     display: flex;
     justify-content: center;
