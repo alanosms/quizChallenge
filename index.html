@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="assets/css/stylesheet.css" />
+  </head>
+  <body>
+    <div class="containerMain">
+      <div class="containerQuiz">
+        <p id="title">COUNTRY QUIZ</p>
+        <img id="worldImage" src="assets/img/world.svg" />
+        <div class="questions">
+          <h2 id="titleQuestion">Qual a capital do Brasil?</h2>
+          <img
+            id="countryFlag"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"
+            width="180px"
+          />
+          <div>
+            <span>A</span>
+            <button class="answer" onclick="see(this)">
+              <p id="firstAnswer">São Paulo</p>
+            </button>
+          </div>
+          <div>
+            <span>B</span>
+            <button class="answer" onclick="see(this)">
+              <p id="secondAnswer">Rio de Janeiro</p>
+            </button>
+          </div>
+          <div>
+            <span>C</span>
+            <button class="answer" onclick="see(this)">
+              <p id="thirdAnswer">Ourinhos</p>
+            </button>
+          </div>
+          <div>
+            <span>D</span>
+            <button class="answer" onclick="see(this)">
+              <p id="fourAnswer">Brasília</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
