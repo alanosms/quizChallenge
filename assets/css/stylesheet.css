@@ -51,12 +51,22 @@
     display: inline;
     font-size: 18px;
 }
-.questions span{
+.questions #lettersAnswer{
     position: absolute;
     padding-left: 30px;
     font-size: 18px;
 }
-.questions button{
+.questions #numCorrectAnswer{
+    color: #6FCF97;
+    font-weight: 700;
+    font-size: 32px;
+}
+.questions #results{
+    color: #1D355D;
+    font-size: 48px;
+    font-weight: 700;
+}
+.questions .answer{
     color: #5256A1;
     cursor: pointer;
     border: 1px solid #5256A1;
@@ -65,10 +75,23 @@
     height: 100%;
     width: 100%;
 }
-.questions button:hover{
+.questions .answer:hover{
     background: #F9A826;
     color: white;
     border: none;
+}
+.questions #tryAgain{
+    margin-top: 50px;
+    background-color: white;
+    border-radius: 12px;
+    border: 2px solid #1D355D;
+    padding: 15px 55px;
+    cursor: pointer;
+}
+.questions #tryAgain a{
+    text-decoration: none;
+    font-weight: 600;
+    color: #1D355D;
 }
 .questions div{
     height: 50px;
