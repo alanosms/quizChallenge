@@ -56,6 +56,25 @@
     padding-left: 30px;
     font-size: 18px;
 }
+
+.questions .nextButton{
+    height: 50px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.questions .nextButton button{
+    color: white;
+    font-weight: 700;
+    background-color: #F9A826;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+    border-radius: 12px;
+    height: 100%;
+    width: 30%;
+}
 .questions #numCorrectAnswer{
     color: #6FCF97;
     font-weight: 700;
@@ -68,6 +87,7 @@
 }
 .questions .answer{
     color: #5256A1;
+    background-color: unset;
     cursor: pointer;
     border: 1px solid #5256A1;
     border-radius: 12px;
@@ -93,7 +113,7 @@
     font-weight: 600;
     color: #1D355D;
 }
-.questions div{
+.questions .answer1, .answer2, .answer3, .answer4{
     height: 50px;
     width: 80%;
     display: flex;
