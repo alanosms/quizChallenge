@@ -8,6 +8,7 @@ const fourAnswer = document.getElementById("fourAnswer");
 const worldImage = document.getElementById("worldImage");
 const countryFlag = document.getElementById("countryFlag");
 
+const nextButton = document.getElementsByClassName("nextButton")[0];
 
 const divQuestions = document.getElementById("questions");
 
@@ -16,6 +17,8 @@ let amountCorrectAnswer = 0;
 let numberTotalQuestions = 5;
 
 let finalQuestions = false;
+let buttonsEnable = true;
+
 const questionList = [
   {
     title: "Qual a Capital do Brasil?",
@@ -88,21 +91,44 @@ function showResults() {
 function handleAnswerQuestion() {
   if (posOfQuestionOnScreen < 4) {
     posOfQuestionOnScreen++;
-    setQuestion(posOfQuestionOnScreen);
   } else if (posOfQuestionOnScreen === 4) showResults();
 }
 function see(event) {
-  if (event.innerText === questionList[posOfQuestionOnScreen].correctAnswer) {
-    console.log("Resposta Certa! ");
-    amountCorrectAnswer++;
-    handleAnswerQuestion();
-    return;
-  } else {
-    console.log("Resposta Incorreta! ");
-    handleAnswerQuestion();
+  nextButton.style.display = "flex";
+  if (buttonsEnable === true){
+    console.log("TRUE");
+    buttonsEnable = false;
+    if (event.innerText === questionList[posOfQuestionOnScreen].correctAnswer) {
+      handleAnswerQuestion();
+      console.log("Resposta Certa! ");
+      amountCorrectAnswer++;
+      event.style.background = "#60BF88";
+      event.style.color = "white";
+      event.style.border = "none";
+      return;
+    } else {
+      handleAnswerQuestion();
+      console.log("Resposta Incorreta! ");
+      event.style.background = "#EA8282";
+      event.style.color = "white";
+      event.style.border = "none";
+    }
   }
+  else return;
 }
 
-
+function clearStylesButtons(){
+  for(let initialCount=0; initialCount < answer.length; initialCount++){
+    answer[initialCount].style.background = "unset";
+    answer[initialCount].style.color = "#5256A1";
+    answer[initialCount].style.border = "1px solid #5256A1";
+  }
+}
+function nextQuestion(){
+  setQuestion(posOfQuestionOnScreen);
+  clearStylesButtons();
+  nextButton.style.display = "none";
+  buttonsEnable = true;
+}
 
 
