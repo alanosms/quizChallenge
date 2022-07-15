@@ -67,6 +67,7 @@ const questionList = [
       "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
   },
 ];
+let CORRECT_ANSWER = questionList[posOfQuestionOnScreen].correctAnswer;
 
 function setQuestion(posOfQuestion) {
   titleQuestion.innerHTML = questionList[posOfQuestion].title;
@@ -82,6 +83,7 @@ function setQuestion(posOfQuestion) {
   thirdAnswer.innerHTML = questionList[posOfQuestion].answer4;
 
   posOfQuestionOnScreen = posOfQuestion;
+  CORRECT_ANSWER = questionList[posOfQuestionOnScreen].correctAnswer;
 }
 function showResults() {
   divQuestions.innerHTML = '<div class="questions">\n <img src="assets/img/undraw_winners_ao2o 2.d76bfdf87016eda38fd439d929ce0371.svg"> \n<p id="results">Results</p>\n<p>You got <span id="numCorrectAnswer">'+amountCorrectAnswer+'</span> correct answers</p>\n<a href="index.html"><button id="tryAgain">Try Again</button></a>';
@@ -93,12 +95,14 @@ function handleAnswerQuestion() {
     posOfQuestionOnScreen++;
   } else if (posOfQuestionOnScreen === 4) showResults();
 }
+
 function see(event) {
   nextButton.style.display = "flex";
   if (buttonsEnable === true){
     console.log("TRUE");
     buttonsEnable = false;
-    if (event.innerText === questionList[posOfQuestionOnScreen].correctAnswer) {
+    
+    if (event.innerText === CORRECT_ANSWER) {
       handleAnswerQuestion();
       console.log("Resposta Certa! ");
       amountCorrectAnswer++;
@@ -108,7 +112,17 @@ function see(event) {
       return;
     } else {
       handleAnswerQuestion();
-      console.log("Resposta Incorreta! ");
+    
+      for(let initialNumber=0; initialNumber < answer.length; initialNumber++){
+          if (answer[initialNumber].innerText === CORRECT_ANSWER){
+            console.log(answer[initialNumber]);
+            answer[initialNumber].style.background = "#6FCF97";
+            answer[initialNumber].style.color = "white";
+            answer[initialNumber].style.border = "none";
+          }
+        }
+
+      console.log("Resposta Incorreta!, ", CORRECT_ANSWER);
       event.style.background = "#EA8282";
       event.style.color = "white";
       event.style.border = "none";
