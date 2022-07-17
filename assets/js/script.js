@@ -14,7 +14,7 @@ const divQuestions = document.getElementById("questions");
 
 let posOfQuestionOnScreen = 0;
 let amountCorrectAnswer = 0;
-let numberTotalQuestions = 5;
+let numberTotalQuestions = 4;
 
 let finalQuestions = false;
 let buttonsEnable = true;
@@ -67,9 +67,11 @@ const questionList = [
       "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
   },
 ];
-let CORRECT_ANSWER = questionList[posOfQuestionOnScreen].correctAnswer;
+let correctAnswerofQuestion = questionList[posOfQuestionOnScreen].correctAnswer;
 
 function setQuestion(posOfQuestion) {
+  posOfQuestionOnScreen = posOfQuestion;
+
   titleQuestion.innerHTML = questionList[posOfQuestion].title;
   if (!questionList[posOfQuestion].urlFlag) {
     countryFlag.style.display = "none";
@@ -82,63 +84,64 @@ function setQuestion(posOfQuestion) {
   fourAnswer.innerHTML = questionList[posOfQuestion].answer3;
   thirdAnswer.innerHTML = questionList[posOfQuestion].answer4;
 
-  posOfQuestionOnScreen = posOfQuestion;
-  CORRECT_ANSWER = questionList[posOfQuestionOnScreen].correctAnswer;
+  correctAnswerofQuestion = questionList[posOfQuestionOnScreen].correctAnswer;
 }
 function showResults() {
-  divQuestions.innerHTML = '<div class="questions">\n <img src="assets/img/undraw_winners_ao2o 2.d76bfdf87016eda38fd439d929ce0371.svg"> \n<p id="results">Results</p>\n<p>You got <span id="numCorrectAnswer">'+amountCorrectAnswer+'</span> correct answers</p>\n<a href="index.html"><button id="tryAgain">Try Again</button></a>';
+  divQuestions.innerHTML =
+    '<div class="questions">\n <img src="assets/img/undraw_winners_ao2o 2.d76bfdf87016eda38fd439d929ce0371.svg"> \n<p id="results">Results</p>\n<p>You got <span id="numCorrectAnswer">' +
+    amountCorrectAnswer +
+    '</span> correct answers</p>\n<a href="index.html"><button id="tryAgain">Try Again</button></a>';
   worldImage.src = "";
   numCorrectAnswer.innerHTML = amountCorrectAnswer;
 }
-function handleAnswerQuestion() {
-  if (posOfQuestionOnScreen < 4) {
+function checkNumberOfQuestion() {
+  if (posOfQuestionOnScreen < numberTotalQuestions) {
     posOfQuestionOnScreen++;
-  } else if (posOfQuestionOnScreen === 4) showResults();
+  } else showResults();
 }
 
-function see(event) {
+function receiveChosenAnswer(event) {
+  chosenAnswer = event;
   nextButton.style.display = "flex";
-  if (buttonsEnable === true){
+  if (buttonsEnable === true) {
     buttonsEnable = false;
-    
-    if (event.innerText === CORRECT_ANSWER) {
-      handleAnswerQuestion();
+
+    if (chosenAnswer.innerText === correctAnswerofQuestion) {
+      checkNumberOfQuestion();
       amountCorrectAnswer++;
-      event.style.background = "#60BF88";
-      event.style.color = "white";
-      event.style.border = "none";
+      chosenAnswer.style.background = "#60BF88";
+      chosenAnswer.style.color = "white";
+      chosenAnswer.style.border = "none";
       return;
     } else {
-      handleAnswerQuestion();
-    
-      for(let initialNumber=0; initialNumber < answer.length; initialNumber++){
-          if (answer[initialNumber].innerText === CORRECT_ANSWER){
-            answer[initialNumber].style.background = "#6FCF97";
-            answer[initialNumber].style.color = "white";
-            answer[initialNumber].style.border = "none";
-          }
+      checkNumberOfQuestion();
+      for (
+        let counter = 0;
+        counter < answer.length;
+        counter++
+      ) {
+        if (answer[counter].innerText === correctAnswerofQuestion) {
+          answer[counter].style.background = "#6FCF97";
+          answer[counter].style.color = "white";
+          answer[counter].style.border = "none";
         }
-
-      event.style.background = "#EA8282";
-      event.style.color = "white";
-      event.style.border = "none";
+      }
+      chosenAnswer.style.background = "#EA8282";
+      chosenAnswer.style.color = "white";
+      chosenAnswer.style.border = "none";
     }
-  }
-  else return;
+  } else return;
 }
-
-function clearStylesButtons(){
-  for(let initialCount=0; initialCount < answer.length; initialCount++){
-    answer[initialCount].style.background = "unset";
-    answer[initialCount].style.color = "#5256A1";
-    answer[initialCount].style.border = "1px solid #5256A1";
+function clearStylesButtons() {
+  for (let counter = 0; counter < answer.length; counter++) {
+    answer[counter].style.background = "unset";
+    answer[counter].style.color = "#5256A1";
+    answer[counter].style.border = "1px solid #5256A1";
   }
 }
-function nextQuestion(){
+function nextQuestion() {
   setQuestion(posOfQuestionOnScreen);
   clearStylesButtons();
   nextButton.style.display = "none";
   buttonsEnable = true;
 }
-
-
