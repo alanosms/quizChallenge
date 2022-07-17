@@ -99,12 +99,10 @@ function handleAnswerQuestion() {
 function see(event) {
   nextButton.style.display = "flex";
   if (buttonsEnable === true){
-    console.log("TRUE");
     buttonsEnable = false;
     
     if (event.innerText === CORRECT_ANSWER) {
       handleAnswerQuestion();
-      console.log("Resposta Certa! ");
       amountCorrectAnswer++;
       event.style.background = "#60BF88";
       event.style.color = "white";
@@ -115,14 +113,12 @@ function see(event) {
     
       for(let initialNumber=0; initialNumber < answer.length; initialNumber++){
           if (answer[initialNumber].innerText === CORRECT_ANSWER){
-            console.log(answer[initialNumber]);
             answer[initialNumber].style.background = "#6FCF97";
             answer[initialNumber].style.color = "white";
             answer[initialNumber].style.border = "none";
           }
         }
 
-      console.log("Resposta Incorreta!, ", CORRECT_ANSWER);
       event.style.background = "#EA8282";
       event.style.color = "white";
       event.style.border = "none";
