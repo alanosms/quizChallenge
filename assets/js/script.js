@@ -18,7 +18,7 @@ let numberTotalQuestions = 4;
 
 let finalQuestions = false;
 let buttonsEnable = true;
-
+clearStylesButtons();
 const questionList = [
   {
     title: "Qual a Capital do Brasil?",
@@ -138,6 +138,7 @@ function clearStylesButtons() {
     answer[counter].style.color = "#5256A1";
     answer[counter].style.border = "1px solid #5256A1";
   }
+  nextButton.style.display = "none";
 }
 function nextQuestion() {
   setQuestion(posOfQuestionOnScreen);
