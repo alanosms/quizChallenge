@@ -107,8 +107,8 @@ function receiveChosenAnswer(event) {
     buttonsEnable = false;
 
     if (chosenAnswer.innerText === correctAnswerofQuestion) {
-      checkNumberOfQuestion();
       amountCorrectAnswer++;
+      checkNumberOfQuestion();
       chosenAnswer.style.background = "#60BF88";
       chosenAnswer.style.color = "white";
       chosenAnswer.style.border = "none";
